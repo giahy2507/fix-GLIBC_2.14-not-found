@@ -1,7 +1,7 @@
 # Fix GLIBC_2.14 not found when running Tensorflow on CentOS without sudo permission
 This note aims to help you fix this bug, ahihi.
 
-# Install [Anaconda](https://www.anaconda.com)
+## Install [Anaconda](https://www.anaconda.com)
 Anaconda is a platform that you can easily install and manage Python packages in local directory (where we dont need "sudo" command to acess or write files).
 
 In case of runing Python program on server without "sudo" permission, you can not install any python package via sudo command.
@@ -20,7 +20,7 @@ sh Anaconda3-5.0.1-Linux-x86_64.sh
 
 After this step, Anaconda3 is install in your home directory "~/anaconda3"
 
-# Install [Tensorflow](https://www.tensorflow.org/)
+## Install [Tensorflow](https://www.tensorflow.org/)
 ```bash
 ~/anaconda3/bin/pip install tensorflow==1.2.0
 ```
@@ -39,12 +39,12 @@ Although We have sucessfully install tensowflow in the first step, we may meet t
 ImportError: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /home/s1610434/anaconda3/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
 ```
 
-This bug cause by the old version of "libc" in the directory "/lib64" used by your CentOS server.
+This bug cause by the old version of "**libc**" in the directory "/lib64" used by your CentOS server.
 
-If you have sudo permission, you can update the "libc" to the new version. But we don't have.
+If you have sudo permission, you can update the "**libc**" to a new version. But we don't have.
 
-To overcome this bug, I recommend use another **libc** which is download by ourselve and located in local directory.
+To overcome this bug, I recommend use another **libc** which is downloaded by ourselve and located in local directory.
 
-
+## Download GLIBC_2.14
 
 
