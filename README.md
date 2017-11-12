@@ -45,6 +45,18 @@ If you have sudo permission, you can update the "**libc**" to a new version. But
 
 To overcome this bug, I recommend use another **libc** which is downloaded by ourselve and located in local directory.
 
-## Download GLIBC_2.14
+## Download GLIBC_2.17
+
+Although what we want is "GLIBC_2.14", but in my experience, after installing "GLIBC_2.14", our program then requires "GLIBC_2.17".
+
+Please download all files in this project.
+
+It contain 4 files:
+
+..* glibc-2.17-55.el7_0.5.x86_64.rpm
+..* glibc-devel-2.17-55.el7_0.5.x86_64.rpm
+..* libstdc++-4.8.5-4.el7.x86_64.rpm
+..* libstdc++-devel-4.8.5-4.el7.x86_64.rpm
+
 
 
