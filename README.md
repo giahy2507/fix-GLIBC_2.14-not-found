@@ -65,4 +65,19 @@ git clone https://github.com/giahy2507/fix-GLIBC_2.14-not-found
 cd fix-GLIBC_2.14-not-found
 ```
 
+Follow the following script to install "GLIBC_2.17"
+
+```bash
+mkdir libc2.17
+cd libc2.17
+rpm2cpio ../glibc-devel-2.17-55.el7_0.5.x86_64.rpm | cpio -id
+rpm2cpio ../glibc-2.17-55.el7_0.5.x86_64.rpm | cpio -id
+
+cd ../
+mkdir libstdc++4.8.5
+cd libstdc++4.8.5
+rpm2cpio ../libstdc++-devel-4.8.5-4.el7.x86_64.rpm | cpio -id
+rpm2cpio ../libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -id
+```
+
 
