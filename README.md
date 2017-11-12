@@ -25,4 +25,14 @@ After this step, Anaconda3 is install in your home directory "~/anaconda3"
 ~/anaconda3/bin/pip install tensorflow==1.2.0
 ```
 
+Try importing tensorflow in python program
+```bash
+~/anaconda3/bin/pip install tensorflow==1.2.0
+```
+
+```
+import tensorflow as tf
+```
+
+
 
