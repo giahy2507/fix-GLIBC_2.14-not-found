@@ -18,7 +18,7 @@ https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh
 sh Anaconda2-5.0.1-Linux-x86_64.sh
 ```
 
-After this step, Anaconda2 is install in your home directory "~/anaconda3"
+After this step, Anaconda2 is install in your home directory "~/anaconda2"
 
 ## Install [Tensorflow](https://www.tensorflow.org/)
 ```bash
@@ -27,7 +27,7 @@ After this step, Anaconda2 is install in your home directory "~/anaconda3"
 
 Try importing tensorflow in python program.
 ```bash
-~/anaconda2/bin/python3
+~/anaconda2/bin/python2
 ```
 
 ```python
@@ -36,7 +36,7 @@ Try importing tensorflow in python program.
 Although We have sucessfully install tensowflow in the first step, we may meet the following bug when import tensorflow.
 
 ```
-ImportError: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /home/s1610434/anaconda2/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+ImportError: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /home/s1610434/anaconda2/lib/python2.7/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
 ```
 
 This bug cause by the old version of "**libc**" in the directory "/lib64" used by your CentOS server.
