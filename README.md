@@ -1,5 +1,6 @@
 # Fix "GLIBC_2.14 not found" when running Tensorflow on CentOS without sudo permission
 This note aims to help you fix this bug.
+
 #CentOS6.4 #Tensorflow #GLIBC_2.14 #GLIBC_2.14
 
 ## Install [Anaconda](https://www.anaconda.com)
