@@ -10,24 +10,24 @@ For example, "sudo pip install tensorflow". (pip and python are located in "/usr
 
 That is a reason why Anaconda is a best choose in this situation.
 
-In this tutorial, I will install [Anaconda3](https://www.anaconda.com/download/#linux) in home directory.
+In this tutorial, I will install [Anaconda2](https://www.anaconda.com/download/#linux) in home directory.
 
 ```bash
 cd ~/
-wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-sh Anaconda3-5.0.1-Linux-x86_64.sh
+https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh
+sh Anaconda2-5.0.1-Linux-x86_64.sh
 ```
 
-After this step, Anaconda3 is install in your home directory "~/anaconda3"
+After this step, Anaconda2 is install in your home directory "~/anaconda3"
 
 ## Install [Tensorflow](https://www.tensorflow.org/)
 ```bash
-~/anaconda3/bin/pip install tensorflow==1.2.0
+~/anaconda2/bin/pip install tensorflow==1.2.0
 ```
 
-Try importing tensorflow in python program
+Try importing tensorflow in python program.
 ```bash
-~/anaconda3/bin/python3
+~/anaconda2/bin/python3
 ```
 
 ```python
@@ -36,7 +36,7 @@ Try importing tensorflow in python program
 Although We have sucessfully install tensowflow in the first step, we may meet the following bug when import tensorflow.
 
 ```
-ImportError: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /home/s1610434/anaconda3/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+ImportError: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /home/s1610434/anaconda2/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
 ```
 
 This bug cause by the old version of "**libc**" in the directory "/lib64" used by your CentOS server.
@@ -80,4 +80,36 @@ rpm2cpio ../libstdc++-devel-4.8.5-4.el7.x86_64.rpm | cpio -id
 rpm2cpio ../libstdc++-4.8.5-4.el7.x86_64.rpm | cpio -id
 ```
 
+Before running Tensorflow program, let's add some environment variables in bash to make the command more clear.
+
+```bash
+setenv PATH ~/anaconda2/bin:${PATH}
+setenv PYTHON_PATH ~/anaconda2
+setenv LDPATH ~/fix-GLIBC_2.14-not-found/libc2.17/lib64/ld-linux-x86-64.so.2
+setenv LDLIBS ~/fix-GLIBC_2.14-not-found/libstdc++4.8.5/usr/lib64:/usr/lib:/usr/lib64
+setenv LDLIBS ~/fix-GLIBC_2.14-not-found/libc2.17/lib64:${LDLIBS}
+```
+
+Try running Tensorflow program again by following command.
+
+```bash
+${LDPATH} --library-path ${LDLIBS} ${PYTHON_PATH}/bin/python
+```
+
+```python
+>>> import tensorflow as tf
+>>> a = tf.constant(10)
+>>> b = tf.constant(32)
+>>> print sess.run(a+b)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sess' is not defined
+>>> sess = tf.Session()
+2017-11-12 22:36:43.357338: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-12 22:36:43.357418: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-12 22:36:43.357444: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+>>> print sess.run(a+b)
+42
+>>>
+```
 
