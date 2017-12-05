@@ -119,4 +119,4 @@ This is my experience on fixing this bug for Anaconda2.
 
 **However**, I have tried to fix this bug for Anaconda3, but I met an **error** "Segmentation fault (core dumped)" when I use the command "${LDPATH} --library-path ${LDLIBS} ${PYTHON_PATH}/bin/python"
 
-If there are any mistakes, please don't hesitate to contact me to fix it.
+If there are any mistakes, please don't hesitate to contact me.
